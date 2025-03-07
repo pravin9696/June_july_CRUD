@@ -1,0 +1,32 @@
+﻿@model June_july_CRUD.Models.tblEmployee
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddEmp</title>
+</head>
+<body>
+    <h1>Employee Registration Form</h1>
+    <div> 
+        <h3 style="color:red">@ViewBag.Message</h3>
+        @using (Html.BeginForm())
+        {
+        <table>
+            <tr><td>@Html.LabelFor(x => x.Name)</td><td>@Html.TextBoxFor(x => x.Name)</td><td></td></tr>
+            <tr><td>@Html.LabelFor(x => x.Address)</td><td>@Html.TextAreaFor(x => x.Address)</td><td></td></tr>
+            <tr><td>@Html.LabelFor(x => x.Contact)</td><td>@Html.TextBoxFor(x => x.Contact)</td><td></td></tr>
+            <tr><td>@Html.LabelFor(x => x.Salary)</td><td>@Html.TextBoxFor(x => x.Salary)</td><td></td></tr>
+            <tr><td><span>Designation</span></td><td>@Html.DropDownListFor(x => x.Designation_id, new SelectList(ViewBag.DesignationList, "Design_id", "Designation"), "--select Designation--")</td><td></td></tr>
+            <tr><td>@Html.LabelFor(x => x.Gender)</td><td>@Html.RadioButtonFor(x => x.Gender, "Male")<span>Male</span>  @Html.RadioButtonFor(x => x.Gender, "Female")<span>Female</span></td><td></td></tr>
+            <tr><td><span>Accept Terms and Condition</span></td><td>@Html.CheckBoxFor(x => x.Terms_condition_Accepted)</td><td></td></tr>
+            <tr><td colspan="2"><input type="submit" value="Submit" />  <input type="reset" value="Reset" /> </td></tr>
+        </table>
+        }
+    </div>
+</body>
+</html>
