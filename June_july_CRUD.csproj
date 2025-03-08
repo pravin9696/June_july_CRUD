@@ -154,6 +154,8 @@
     <None Include="packages.config" />
     <Content Include="Views\Employee\AddEmp.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Employee\SearchEmp.cshtml" />
+    <Content Include="Views\Employee\EditEmp.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

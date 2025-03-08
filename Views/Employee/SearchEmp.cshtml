@@ -1,0 +1,24 @@
+﻿@model June_july_CRUD.Models.tblEmployee
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SearchEmp</title>
+</head>
+<body>
+    <div>
+        <h3 style="color:red">@ViewBag.Message</h3>
+        @using (Html.BeginForm())
+        {
+            @Html.DisplayNameFor(x=>x.empID) @Html.EditorFor(x=>x.empID)<br />
+            <input type="submit"  value="Search" />
+         
+        }
+    </div>
+</body>
+</html>

@@ -15,6 +15,63 @@ namespace June_july_CRUD.Controllers
         {
             return View();
         }
+        public ActionResult SearchEmp()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult SearchEmp(tblEmployee e)
+        {
+            var emp = dbo.tblEmployees.FirstOrDefault(x => x.empID == e.empID);
+            if (emp != null)
+            {
+                return RedirectToAction("EditEmp", emp);
+            }
+            else
+            {
+                ViewBag.Message = "Employee not found";
+                return View();  
+            }
+
+           
+        }
+        public ActionResult EditEmp(tblEmployee ee)
+        {
+            List<tblDesignation> designationList = dbo.tblDesignations.ToList();
+
+            ViewBag.DesignationList = designationList;
+
+
+            return View(ee);
+        }
+        [HttpPost]
+        [ActionName("EditEmp")]
+        public ActionResult EditEmp1(tblEmployee ee)
+        {
+            var emp = dbo.tblEmployees.FirstOrDefault(x => x.empID == ee.empID);
+            if (emp!=null)
+            {
+                emp.Name = ee.Name;
+                emp.Address = ee.Address;   
+                emp.Contact = ee.Contact;
+                emp.Salary = ee.Salary;
+                emp.Designation_id = ee.Designation_id;
+                emp.Gender=ee.Gender;
+                emp.Terms_condition_Accepted = ee.Terms_condition_Accepted;
+                int n = dbo.SaveChanges();
+                if (n>0)
+                {
+                    return RedirectToAction("index");
+                }                
+            }
+
+            List<tblDesignation> designationList = dbo.tblDesignations.ToList();
+
+            ViewBag.DesignationList = designationList;
+
+
+            return View(ee);
+        }
         public ActionResult AddEmp()
         {
             List<tblDesignation> designationList=dbo.tblDesignations.ToList();
